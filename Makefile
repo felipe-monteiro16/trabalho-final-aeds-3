@@ -1,12 +1,17 @@
 CC = gcc
 CFLAGS = -Wall -O2
-SRC = main.c
-TARGET = program
+SRC = src/main.c
+TARGET = program.exe
 
 all: $(TARGET)
 
-$(TARGET): $(SRC)
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
+# from:
+$(TARGET): src/main.c
+	$(CC) $(CFLAGS) -o $(TARGET) src/main.c
+
+# to:
+$(TARGET): src/main.c src/interface.c
+	$(CC) $(CFLAGS) -o $(TARGET) src/main.c src/interface.c
 
 clean:
-	rm -rf $(TARGET)
+	del $(TARGET)
