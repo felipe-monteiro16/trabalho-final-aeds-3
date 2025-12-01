@@ -73,8 +73,8 @@ int menu(char opcoes[][50], int Quant, int x[], int y[], int opcao) {
         printf("%s", opcoes[opcao]);
         Tecla = getTecla();
         if(Tecla == TEC_ENTER) break;
-        textcolor(WHITE);
-        textbackground(BLACK);
+        textcolor(BLACK);
+        textbackground(WHITE);
         gotoxy(x[opcao], y[opcao]);
         printf("%s", opcoes[opcao]);
         if(Tecla == TEC_DIR) opcao++;
@@ -89,7 +89,7 @@ void TelaPrincipal() {
     system("cls");
     textcolor(BLACK);
     textbackground(LIGHT_GRAY);
-    Borda(1,1,110,28,1,0);
+    Borda(1,1,110,40,1,0);
     gotoxy(40, 3);
     printf("Projeto Labirinto - BFS");
     gotoxy(50,25);
@@ -98,4 +98,12 @@ void TelaPrincipal() {
     printf("By Felipe Monteiro, Luiz Guilherme, Matheus Vieira e Maria Isabel");
     textcolor(WHITE);
     textbackground(BLACK);
+}
+
+void TelaVazia() {
+    system("cls");
+    textbackground(LIGHT_GRAY);
+    Borda(1,1,110,40,1,0);
+    textbackground(LIGHT_GRAY);
+    textcolor(BLACK);
 }

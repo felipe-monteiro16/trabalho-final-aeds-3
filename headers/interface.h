@@ -22,5 +22,6 @@ void Borda(int x, int y, int largura, int altura, int tipo, int sombra);
 int menu(char opcoes[][50], int Quant, int x[], int y[], int opcao);
 
 void TelaPrincipal();
+void TelaVazia();
 
 #endif
