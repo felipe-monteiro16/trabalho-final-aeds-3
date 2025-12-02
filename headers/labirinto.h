@@ -1,5 +1,6 @@
 #ifndef LABIRINTO_H
 #define LABIRINTO_H
+#define LENGTH 25
 
 typedef struct {
     int linhas;

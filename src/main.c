@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "../headers/interface.h"
 #include "../headers/labirinto.h"
+#include "../headers/solver.h"
 
 
 void pressEnter() {
@@ -19,16 +20,16 @@ int main() {
     int x[] = {10, 10, 10};
     int y[] = {8, 10, 12};
 
-   
+    Labirinto *meuLabirinto;
+
     do {
         TelaPrincipal();
         opcao = menu(opcoes, 3, x, y, opcao);
+        
+        // Mostrar o labirinto apenas
         if(opcao == 0) {
-            Labirinto *meuLabirinto = lerLabirinto("labirinto.txt");
-
+            meuLabirinto = lerLabirinto("labirinto.txt");
             if (meuLabirinto != NULL) {
-                //printf("Labirinto carregado: %d x %d\n", meuLabirinto->linhas, meuLabirinto->colunas);
-
                 TelaVazia();
                 for (int i = 0; i < meuLabirinto->linhas; i++) {
                     gotoxy(30, i+5);
@@ -37,15 +38,20 @@ int main() {
                     }
                     printf("\n");
                 }
-                free(meuLabirinto->dados);
-                free(meuLabirinto);
             }
             pressEnter();
         }
+
+        // Mostrar a resolução do labirinto com BFS
         if(opcao == 1) {
-            //Chama a função para resolver o labirinto com BFS
+            meuLabirinto = lerLabirinto("labirinto.txt");
+            int* predecessor = bfs(meuLabirinto);
+            TelaVazia();
+            DisplayShortestPath(predecessor, meuLabirinto);
+            pressEnter();
         }
     } while(opcao != 2);
-
+    //free(meuLabirinto->dados);
+    //free(meuLabirinto);
     return 0;
 }
