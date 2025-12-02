@@ -6,7 +6,8 @@
 
 
 void pressEnter() {
-    printf("\n\nPressione Enter para continuar...");
+    gotoxy(40,35);
+    printf("Pressione Enter para continuar...");
     while (getchar() != '\n');
     //getchar();
 }
@@ -17,8 +18,8 @@ int main() {
     char opcoes[][50] = {"Abrir arquivo e mostrar labirinto",
                          "Mostrar solucao (BFS)",
                          "Sair"};
-    int x[] = {10, 10, 10};
-    int y[] = {8, 10, 12};
+    int x[] = {10, 45, 70};
+    int y[] = {8, 8, 8};
 
     Labirinto *meuLabirinto;
 
@@ -51,6 +52,7 @@ int main() {
             pressEnter();
         }
     } while(opcao != 2);
+    system("cls");
     //free(meuLabirinto->dados);
     //free(meuLabirinto);
     return 0;

@@ -2,7 +2,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "../headers/solver.h"
+#include "../headers/interface.h"
 
+
+int count;
 
 ///////////////////////////////////////////////////
 // QUEUE FUNCIONS
@@ -142,6 +145,7 @@ void DisplayShortestPath(int* predecessor, Labirinto* lab) {
 
     // Se o alvo nao tem pai (e nao eh o inicio), nao existe caminho
     if (predecessor[targetNode] == -1 && targetNode != lab->inicio_idx) {
+        gotoxy(40,20);
         printf("Caminho nao encontrado!\n");
         return;
     }
@@ -155,12 +159,13 @@ void DisplayShortestPath(int* predecessor, Labirinto* lab) {
         mapaSolucao[i] = lab->dados[i];
     }
 
-    // 2. Reconstrói o caminho de trás para frente marcando com '*'
+    // 2. Reconstrói o caminho de trás para frente marcando com 'O'
     int current = targetNode;
     while (current != -1) {
         // Se não for Inicio nem Fim, marca com o símbolo desejado
         if (current != lab->inicio_idx && current != lab->fim_idx) {
-            mapaSolucao[current] = 'O'; // Aqui definimos o asterisco
+            mapaSolucao[current] = 'O';
+            count++;
         }
         current = predecessor[current];
     }
@@ -174,6 +179,8 @@ void DisplayShortestPath(int* predecessor, Labirinto* lab) {
         }
         printf("\n");
     }
+    gotoxy(40, 33);
+    printf("Numero de Passos: %d", count+1);
     
     free(mapaSolucao); // Libera a memória da cópia
 }

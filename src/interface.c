@@ -67,14 +67,15 @@ int menu(char opcoes[][50], int Quant, int x[], int y[], int opcao) {
         printf("%s", opcoes[i]);
     }
     do {
-        textcolor(BLACK);
-        textbackground(WHITE);
+        textcolor(WHITE);
+        textbackground(BLACK);
         gotoxy(x[opcao], y[opcao]);
+        // textbackground(LIGHT_GRAY);
         printf("%s", opcoes[opcao]);
         Tecla = getTecla();
         if(Tecla == TEC_ENTER) break;
         textcolor(BLACK);
-        textbackground(WHITE);
+        textbackground(LIGHT_GRAY);
         gotoxy(x[opcao], y[opcao]);
         printf("%s", opcoes[opcao]);
         if(Tecla == TEC_DIR) opcao++;
@@ -102,6 +103,7 @@ void TelaPrincipal() {
 
 void TelaVazia() {
     system("cls");
+    textcolor(BLACK);
     textbackground(LIGHT_GRAY);
     Borda(1,1,110,40,1,0);
     textbackground(LIGHT_GRAY);
